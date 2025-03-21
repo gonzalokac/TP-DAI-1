@@ -36,8 +36,8 @@ function validarFormulario() {
         BienUsuario.textContent="el nombre del usuario está bien"
     }
 
-    let regexContraseña = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!regexContraseña.test(contraseña)) {
+    let Contraseña = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!Contraseña.test(contraseña)) {
         errorContraseña.textContent = "La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.";
         valido = false;
     } else{
@@ -53,8 +53,8 @@ function validarFormulario() {
         BienConfirmarContraseña.textContent="Las Contraseñas están iguales :)"
     }
 
-    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexEmail.test(email)) {
+    let Email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!Email.test(email)) {
         errorEmail.textContent = "Por favor, ingrese un email válido.";
         valido = false;
     }  else{
@@ -75,4 +75,17 @@ function validarFormulario() {
     }
 
     return false;
+}
+
+document.querySelector("#mostrarContraseña").onclick = () => {
+    let contraseña = document.querySelector("#contraseña");
+    let confirmarContraseña = document.querySelector("#confirmarContraseña");
+
+    if(contraseña.getAttribute("type") == "password"){
+        contraseña.setAttribute("type", "text");
+        confirmarContraseña.setAttribute("type", "text");
+    } else {
+        contraseña.setAttribute("type", "password");
+        confirmarContraseña.setAttribute("type", "password");
+    }
 }
